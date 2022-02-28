@@ -49,7 +49,8 @@ class Snake(Actor):
             self._segments.append(segment)
 
     def turn_head(self, velocity):
-        self._segments[0].set_velocity(velocity)
+        if not self._segments[0].get_velocity().opposite(velocity):
+            self._segments[0].set_velocity(velocity)
     
     def _prepare_body(self):
         x = int(constants.MAX_X / 2)
